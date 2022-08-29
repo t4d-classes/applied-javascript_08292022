@@ -1,6 +1,7 @@
 export class ColorHome extends HTMLElement {
 
   #colors = [];
+  #deleteColor = () => undefined;
 
   connectedCallback() {
     const header = document.createElement('h1');
@@ -14,6 +15,8 @@ export class ColorHome extends HTMLElement {
 
   #updateColorList() {
 
+    console.log("update color list");
+
     const colorList = this.querySelector('ul');
     const colorListItems = colorList.children;
     const colorListItemsLength = colorListItems.length;
@@ -23,11 +26,12 @@ export class ColorHome extends HTMLElement {
       this.#colors.length,
     );
 
-    let counter = 0;
-    while (counter < updateExistingListItemsLength) {
-      colorListItems[counter].textContent = this.#colors[counter];
-      counter++;
-    }
+    Array.from(colorList.children).forEach((colorListItem, i) => {
+      colorListItem.querySelector('span').textContent = this.#colors[i];
+    });
+
+    // imperative code below, watch out!
+    let counter = updateExistingListItemsLength;
 
     while (counter < colorListItemsLength) {
       colorListItems[colorListItems.length - 1].remove();
@@ -35,14 +39,27 @@ export class ColorHome extends HTMLElement {
     }
 
     while(counter < this.#colors.length) {
-      const colorListItem = document.createElement('li');
-      colorListItem.textContent = this.#colors[counter];
-      colorList.appendChild(colorListItem);
+      
+      colorList.appendChild(this.#createColorListItem(this.#colors[counter]));
       counter++;
     }
 
+  }
 
+  #createColorListItem(color) {
+    
+    const colorText = document.createElement('span');
+    colorText.textContent = color;
 
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = "X";
+    deleteButton.addEventListener('click', () => this.#deleteColor(color));
+    
+    const colorListItem = document.createElement('li');
+    colorListItem.appendChild(colorText);
+    colorListItem.appendChild(deleteButton);
+
+    return colorListItem;
   }
 
   get colors() {
@@ -50,8 +67,18 @@ export class ColorHome extends HTMLElement {
   }
 
   set colors(value) {
-    this.#colors = value;
-    this.#updateColorList();
+    console.log("calling set colors");
+    if (this.#colors !== value) {
+      this.#colors = value;
+      this.#updateColorList();
+    }
+  }
+
+  set onDeleteColor(fn) {
+    if (typeof fn !== 'function') {
+      throw new Error('on delete color must be a function');
+    }
+    this.#deleteColor = fn;
   }
 
 
