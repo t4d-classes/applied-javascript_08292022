@@ -2,6 +2,7 @@ export class ColorHome extends HTMLElement {
 
   #colors = [];
   #deleteColor = () => undefined;
+  #deleteColorFns = new Map();
 
   connectedCallback() {
     const header = document.createElement('h1');
@@ -27,14 +28,31 @@ export class ColorHome extends HTMLElement {
     );
 
     Array.from(colorList.children).forEach((colorListItem, i) => {
-      colorListItem.querySelector('span').textContent = this.#colors[i];
+      const color = this.#colors[i];
+      colorListItem.querySelector('span').textContent = color;
+
+      const deleteColorButton = colorListItem.querySelector('button');
+      const oldDeleteColorFn = this.#deleteColorFns.get(deleteColorButton);
+      deleteColorButton.removeEventListener('click', oldDeleteColorFn);
+
+      const newDeleteColorFn = () => this.#deleteColor(color);
+      this.#deleteColorFns.set(deleteColorButton, newDeleteColorFn);
+      deleteColorButton.addEventListener('click', newDeleteColorFn);
     });
 
     // imperative code below, watch out!
     let counter = updateExistingListItemsLength;
 
     while (counter < colorListItemsLength) {
-      colorListItems[colorListItems.length - 1].remove();
+      const colorListItem = colorListItems[colorListItems.length - 1];
+      const colorListItemButton = colorListItem.querySelector("button");
+
+      const deleteColorListFn = this.#deleteColorFns.get(colorListItemButton);
+
+      colorListItemButton.removeEventListener("click", deleteColorListFn);
+      this.#deleteColorFns.delete(colorListItemButton);
+
+      colorListItem.remove();
       counter++;
     }
 
@@ -53,7 +71,11 @@ export class ColorHome extends HTMLElement {
 
     const deleteButton = document.createElement('button');
     deleteButton.textContent = "X";
-    deleteButton.addEventListener('click', () => this.#deleteColor(color));
+
+    const deleteColorFn = () => this.#deleteColor(color);
+    this.#deleteColorFns.set(deleteButton, deleteColorFn)
+
+    deleteButton.addEventListener('click', deleteColorFn);
     
     const colorListItem = document.createElement('li');
     colorListItem.appendChild(colorText);
