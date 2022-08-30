@@ -9,9 +9,14 @@ const colorList = [
   { id: 3, name: 'blue', hexcode: '0000ff' },
 ];
 
+const carList = [
+  { id: 1, make: 'Tesla', model: 'S', year: 2018, color: 'red', price: 120000 },
+  { id: 2, make: 'Ford', model: 'Fusion Hybrid', year: 2019, color: 'blue', price: 45000 }
+]
+
 const rootElement = document.querySelector('#root');
 const root = createRoot(rootElement);
 root.render(<>
   <ColorTool colors={colorList} />
-  <CarTool />
+  <CarTool cars={carList} />
 </>);
