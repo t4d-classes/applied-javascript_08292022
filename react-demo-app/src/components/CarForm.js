@@ -1,5 +1,6 @@
-import { useState } from "react";
 import styled from 'styled-components';
+
+import { useForm } from '../hooks/useForm';
 
 
 const Label = styled.label`
@@ -8,20 +9,13 @@ const Label = styled.label`
 
 export const CarForm = (props) => {
 
-  const [carForm, setCarForm] = useState({
+  const [carForm, change, resetCarForm ] = useForm({
     make: '', model: '', year: 1900, color: '', price: 0,
   });
 
-  const change = (evt) => {
-    setCarForm({
-      ...carForm,
-      [evt.target.name]:evt.target.type === 'number'
-        ? evt.target.valueAsNumber : evt.target.value,
-    });
-  };
-
   const submitCar = () => {
     props.onSubmitCar({ ...carForm });
+    resetCarForm();
   };
 
   return (
