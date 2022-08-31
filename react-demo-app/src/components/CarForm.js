@@ -6,7 +6,7 @@ const Label = styled.label`
   display: block;
 `;
 
-export const CarForm = () => {
+export const CarForm = (props) => {
 
   const [carForm, setCarForm] = useState({
     make: '', model: '', year: 1900, color: '', price: 0,
@@ -20,7 +20,9 @@ export const CarForm = () => {
     });
   };
 
-  console.log(carForm);
+  const submitCar = () => {
+    props.onSubmitCar({ ...carForm });
+  };
 
   return (
     <form>
@@ -49,7 +51,7 @@ export const CarForm = () => {
         <input type="number" name="price"
           value={carForm.price} onChange={change} />
       </Label>
-      <button type="button">Add Car</button>
+      <button type="button" onClick={submitCar}>Add Car</button>
     </form>
   );
 
