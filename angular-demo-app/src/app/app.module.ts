@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { ColorToolModule } from './color-tool/color-tool.module';
+import { CarToolModule } from './car-tool/car-tool.module';
 
 import { AppComponent } from './app.component';
 
@@ -12,6 +13,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     ColorToolModule,
+    CarToolModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
