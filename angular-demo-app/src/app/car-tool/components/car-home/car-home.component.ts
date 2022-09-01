@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from '../../models/cars';
+import { Car, NewCar } from '../../models/cars';
 
 @Component({
   selector: 'app-car-home',
@@ -18,6 +18,20 @@ export class CarHomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  addCar(car: NewCar) {
+    this.cars = [
+      ...this.cars,
+      {
+        ...car,
+        id: Math.max(...this.cars.map(c => c.id), 0) + 1,
+      },
+    ];
+  }
+
+  deleteCar(carId: number) {
+    this.cars = this.cars.filter(c => c.id !== carId);
   }
 
 }

@@ -1,3 +1,3 @@
 <app-tool-header headerText="Car Tool"></app-tool-header>
-<app-car-table [cars]="cars"></app-car-table>
-
+<app-car-table [cars]="cars" (deleteCar)="deleteCar($event)"></app-car-table>
+<app-car-form (submitCar)="addCar($event)"></app-car-form>
