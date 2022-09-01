@@ -11,14 +11,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let car of cars">
-      <td>{{car.id}}</td>
-      <td>{{car.make}}</td>
-      <td>{{car.model}}</td>
-      <td>{{car.year}}</td>
-      <td>{{car.color}}</td>
-      <td>{{car.price}}</td>
-      <td><button (click)="doDeleteCar(car.id)">Delete</button></td>
-    </tr>
+    <ng-container *ngFor="let car of cars">
+      <tr class="app-car-view-row" *ngIf="car.id !== editCarId"
+        [car]="car" (editCar)="editCar.emit($event)" (deleteCar)="deleteCar.emit($event)"></tr>
+      <tr class="app-car-edit-row" *ngIf="car.id === editCarId"
+        [car]="car" (saveCar)="saveCar.emit($event)" (cancelCar)="cancelCar.emit()"></tr>
+    </ng-container>
   </tbody>
 </table>
