@@ -1,3 +1,5 @@
 <app-tool-header [headerText]="upperCaseHeaderText"></app-tool-header>
 
 <app-color-list [colors]="colors"></app-color-list>
+
+<app-color-form (submitColor)="addColor($event)"></app-color-form>
