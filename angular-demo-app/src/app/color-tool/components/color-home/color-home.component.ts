@@ -9,7 +9,11 @@ import { Color } from '../../models/colors';
 })
 export class ColorHomeComponent implements OnInit {
 
-  headerText = "Color Tool"
+  mainHeaderText = "Color Tool"
+
+  get upperCaseHeaderText() {
+    return this.mainHeaderText.toUpperCase();
+  }
 
   colors: Color[] = [
     { id: 1, name: 'red', hexcode: 'ff0000' },
