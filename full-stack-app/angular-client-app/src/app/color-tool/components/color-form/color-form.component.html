@@ -1,0 +1,12 @@
+<form [formGroup]="colorForm">
+  <label>
+    Name:
+    <input type="text" formControlName="name" />
+  </label>
+  <label>
+    Hexcode:
+    <input type="text" formControlName="hexcode" />
+  </label>
+  <button type="button" (click)="doSubmitColor()">
+    {{buttonText}}</button>
+</form>

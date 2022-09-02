@@ -1,0 +1,66 @@
+{
+  "colors": [
+    {
+      "id": 1,
+      "name": "red",
+      "hexcode": "ff0000"
+    },
+    {
+      "id": 2,
+      "name": "green",
+      "hexcode": "00ff00"
+    },
+    {
+      "id": 3,
+      "name": "blue",
+      "hexcode": "0000ff"
+    },
+    {
+      "name": "purple",
+      "hexcode": "ff00ff",
+      "id": 4
+    }
+  ],
+  "cars": [
+    {
+      "id": 1,
+      "make": "Ford",
+      "model": "Fusion Hybrid",
+      "year": 2019,
+      "color": "blue",
+      "price": 45000
+    },
+    {
+      "make": "",
+      "model": "",
+      "year": 1900,
+      "color": "",
+      "price": 0,
+      "id": 2
+    },
+    {
+      "make": "",
+      "model": "",
+      "year": 1900,
+      "color": "",
+      "price": 0,
+      "id": 3
+    },
+    {
+      "make": "",
+      "model": "",
+      "year": 1900,
+      "color": "",
+      "price": 0,
+      "id": 4
+    },
+    {
+      "make": "",
+      "model": "",
+      "year": 1900,
+      "color": "",
+      "price": 0,
+      "id": 5
+    }
+  ]
+}

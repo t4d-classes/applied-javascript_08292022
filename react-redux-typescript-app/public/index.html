@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+    <!-- <script>
+
+      'use strict';
+
+      const outer = () => {
+
+        let t = 2;
+
+        setTimeout(() => {
+          t = 4;
+        }, 2000);
+
+        const inner = () => {
+          console.log(t);
+        };
+
+        // inner();
+        return inner;
+      }
+
+      const innerFn = outer();
+
+      innerFn();
+
+      setTimeout(() => {
+        innerFn();
+      }, 4000);
+
+      // console.dir(innerFn);
+
+    </script> -->
+    <!-- <script>
+
+      setTimeout(() => {
+        console.log('a');
+      }, 0);
+
+      console.log('b');
+
+    </script> -->
+    <!-- <script>
+
+      'use strict';
+
+      class Promise {
+
+        constructor(fn) {
+
+          this._resolveFns = [];
+          this._rejectFns = [];
+
+          const resolveFn = result => {
+            this._resolveFns.forEach(fn => fn(result));
+          };
+
+          const rejectFn = result => {
+            this._rejectFns.forEach(fn => fn(result));
+          };
+
+          fn(resolveFn, rejectFn);
+        }
+
+        // resolves
+        then(fn) {
+          this._resolveFns.push(fn);
+        }
+
+        // reject
+        catch(fn) {
+          this._rejectFns.push(fn);
+        }
+      }
+
+
+      const p = new Promise((resolve, reject) => { 
+        // 1
+
+        setTimeout(() => {
+          // 3
+          reject("not cool");
+          
+        }, 2000);
+
+      });
+
+      p.then(result => {
+        // 4
+        console.log(result);
+      });
+
+      p.catch(result => {
+        // 4
+        console.log('rejected: ', result);
+      });
+
+      // 2
+      console.log("made it here");
+
+
+    </script> -->
+    <!-- <script>
+
+      'use strict';
+
+      const delay = () => Math.floor(Math.random() * 1000) + 500;
+
+      const taskA = () => new Promise(resolve => setTimeout(() => resolve('a'), delay()));
+      const taskB = () => new Promise(resolve => setTimeout(() => resolve('b'), delay()));
+      const taskC = () => new Promise(resolve => setTimeout(() => resolve('c'), delay()));
+
+      const doAllTasks = () => {
+        return taskA()
+          .then(result => {
+            console.log(result);
+            return taskB();
+          })
+          .then(result => {
+            console.log(result);
+            return taskC();
+          })
+          .then(result => {
+            console.log(result);
+          });
+      };
+
+      const doAllTasks2 = async () => {
+        console.log(await taskA());
+        console.log(await taskB());
+        console.log(await taskC());
+      };
+
+
+      doAllTasks2().then(() => console.log('all done'));
+
+    </script> -->
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>

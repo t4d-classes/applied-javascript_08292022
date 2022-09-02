@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>Color Tool Web Components</title>
+    <link rel="shortcut icon" href="#">
+    <script defer type="module" src="scripts/color-store.js"></script>
+    <script defer type="module" src="scripts/color-home.js"></script>
+    <script defer type="module" src="scripts/app.js"></script>
+  </head>
+
+  <body>
+    <h1>Apps</h1>
+    <color-home>
+      <span slot="header">My Color Home</span>
+    </color-home>
+
+    <template id="color-home-tpl">
+      <div>
+        <style>
+          h1 { color: blue; }
+          label { display: block; }
+        </style>
+        <h1><slot name="header">Color Home</slot></h1>
+        <ul></ul>
+        <form>
+          <h3>New Color</h3>
+          <label>
+            Name:
+            <input type="text" name="name" value="">
+          </label>
+          <label>
+            Hexcode:
+            <input type="text" name="hexcode" value="">
+          </label>
+          <button type="button">Add Color</button>
+        </form>
+      </div>
+    </template>
+
+  </body>
+
+
+</html>
