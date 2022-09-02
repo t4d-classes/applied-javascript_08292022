@@ -3,12 +3,105 @@
 <html>
   <head>
     <title>Learn JS</title>
-    <script defer type="module" src="scripts/color-home.js"></script>
-    <script defer type="module" src="scripts/app.js"></script>
   </head>
 
   <body>
     <h1>Learn JS</h1>
-    <color-home data-header-text="My Color Tool"></color-home>
+    <!-- <script>
+
+      function outer() {
+
+        let t = 2;
+
+        console.log("test");
+
+        setTimeout(function assignFour() {
+          t = 4;
+          console.log("test");
+        }, 2000);
+
+        return function innerFn() {
+          console.log(t);
+          console.log("test");
+        };
+      }
+
+      const inner = outer();
+
+      inner();
+
+      setTimeout(function secondPrint() {
+        inner();
+        console.log("test");
+      }, 4000);
+
+      // console.dir(inner);
+
+
+
+    </script> -->
+    <!-- <script>
+
+      setTimeout(() => {
+
+        console.log("three day weekends rock!");
+
+      }, 0);
+
+      console.log("I would rather be working than taking time off.");
+
+    </script> -->
+    <!-- <script>
+
+      const p = new Promise((resolve, reject) => {
+
+        setTimeout(() => {
+          reject('a');
+        }, 2000);
+
+      });
+
+      p.then((results) => {
+        console.log(results);
+      }).catch((results) => {
+        console.log('failed: ', results);
+      });
+
+      console.log('made it here');
+
+    </script> -->
+    <script>
+
+      const doItLater = (fn, delay) => {
+        return new Promise(resolve => {
+          setTimeout(() => resolve(fn()), delay);
+        });
+      };
+
+      const oldDoIt = () => {
+        return doItLater(() => 2 + 4, 2000)
+          .then(result => console.log(result))
+          .catch(err => console.error(err));
+      }
+
+      
+      const doIt = async () => {
+        try {
+          const result = await doItLater(() => 2 + 4, 2000);
+          console.log(result);
+        }
+        catch(err) {
+          console.error(err);
+        }
+      };
+
+
+      
+
+
+    </script>
+
+
+
   </body>
 </html>
